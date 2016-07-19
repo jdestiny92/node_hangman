@@ -4,7 +4,6 @@ console.log('Hello this is my Node Hangman Game. Start the game by guessing a le
 var question = '_ _ _   _ _ _ _ _   _ _   _ _ _ _ _   _ _ _ _ _ _';
 console.log(question);
 var questionArray = question.split('');
-//console.log(questionArray);
 var correctGuess;
 var guesses = 10;
 
@@ -15,23 +14,25 @@ function LetterChecker(options){
 	correctGuess = 0;
 	this.correctWord = options.correctWord;
 	this.letterGuessed = options.letterGuessed;
-	//var split = (this.correctWord).split("");
+	var split = (this.correctWord).split('');
 	this.result = function(){
 		
-		console.log('Letter guessed: ' + this.letterGuessed.name);
+		console.log('\n' + 'Letter guessed: ' + this.letterGuessed.name);
 		
 		for(i=0; i<(this.correctWord).length; i++){
-			if(this.letterGuessed.name == (this.correctWord).charAt(i)){
+			if(this.letterGuessed.name == split[i]){
 				correctGuess++;
-				(question.charAt(i)) = this.letterGuessed.name;
-				//console.log(question.charAt(i));
-				console.log(question);
+				questionArray[i] = (this.letterGuessed.name);
+
 			}
 		}
 		if(correctGuess == 0){
 			guesses--;
-			console.log('Remaining guesses: ' + guesses);
+			console.log('\n' + 'Remaining guesses: ' + guesses);
 		}
+
+
+		console.log('\n' + questionArray.toString().replace(/,/g, ''));
 	}
 }
 
